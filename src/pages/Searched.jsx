@@ -14,7 +14,7 @@ function Searched() {
 
   const [search, setSearch] = useState([]);
 
-  const getSearched= async (name) => {
+  const getSearched = async (name) => {
     const data = await fetch(
       `${url}?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
     );
@@ -22,16 +22,20 @@ function Searched() {
     setSearch(recipes.results);
   };
 
-  return <Grid>
+  return (
+    <Grid>
       {search.map((item) => {
-          return(
-              <Card key={item.id}>
-                  <img src={item.image} alt={item.title} />
-                  <h4>{item.title}</h4>
-              </Card>
-          )
+        return (
+          <Card key={item.id}>
+            <Link to={"/recipe/" + item.id}>
+              <img src={item.image} alt={item.title} />
+              <h4>{item.title}</h4>
+            </Link>
+          </Card>
+        );
       })}
-  </Grid>;
+    </Grid>
+  );
 }
 
 const Grid = styled.div`
