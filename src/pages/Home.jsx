@@ -1,11 +1,17 @@
-import Veggie from '../components/Veggie';
-import Popular from '../components/Popular';
+import Veggie from "../components/Veggie";
+import Popular from "../components/Popular";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div>
-        <Veggie/>
-        <Popular/>
-    </div>
-  )
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transtion={{ duration: 0.5 }}
+    >
+      <Veggie />
+      <Popular />
+    </motion.div>
+  );
 }
